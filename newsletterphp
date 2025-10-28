@@ -1,0 +1,41 @@
+<?php
+// filepath: c:\xampp\htdocs\upp_site22\newsletter.php
+
+// Database connection settings
+$host = "localhost";
+$user = "root";
+$pass = ""; // your MySQL password
+$db   = "upp_site22"; // your database name
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['newsletter_email'] ?? '');
+    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Please enter a valid email address.";
+        exit;
+    }
+
+    // Connect to database
+    $mysqli = new mysqli($host, $user, $pass, $db);
+    if ($mysqli->connect_error) {
+        echo "Database connection failed.";
+        exit;
+    }
+
+    // Insert email
+    $stmt = $mysqli->prepare("INSERT IGNORE INTO newsletter_subscribers (email) VALUES (?)");
+    $stmt->bind_param("s", $email);
+    if ($stmt->execute()) {
+        if ($stmt->affected_rows > 0) {
+            echo "Thank you for subscribing!";
+        } else {
+            echo "You are already subscribed.";
+        }
+    } else {
+        echo "There was an error. Please try again.";
+    }
+    $stmt->close();
+    $mysqli->close();
+} else {
+    echo "Invalid request.";
+}
+?>

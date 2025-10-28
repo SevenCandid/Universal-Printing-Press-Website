@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#003366">
+    <title>Universal Printing Press | Order Now</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="img/upplogo.png" alt="Universal Printing Press">
+                    <span class="logo-text">UPP</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="order.html" class="btn btn-primary btn-nav active">Get a Quote</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </button>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <section class="hero page-banner">
+        <!-- Background Slider -->
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('img/heat-press.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/emb-machine.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/dtf-src.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/large_format_pos.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/invoice_books.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1>Get Your Quote Today</h1>
+                
+                <!-- Rotating Slogan -->
+                <div class="rotating-slogan">
+                    <span class="slogan-text active">Start Your Print Project Now</span>
+                    <span class="slogan-text">Fast, Easy, Affordable</span>
+                    <span class="slogan-text">Quality Guaranteed</span>
+                </div>
+                
+                <p>Fill out the form below and we'll get back to you with a competitive quote within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Place Your Order</h2>
+            <p class="section-subtitle">Fill out the form below to request a quote or place an order. Our team will review your requirements and get back to you within 24 hours with pricing and timeline details.</p>
+            
+            <div class="order-form-container">
+                <form id="orderForm" action="upload.php" method="POST" enctype="multipart/form-data">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name *</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="company" class="form-label">Company Name</label>
+            <input type="text" id="company" name="company" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service" class="form-label">Service Required *</label>
+            <select id="service" name="service" class="form-select" required>
+              <option value="" selected disabled>Select a service</option>
+              <option value="Business Cards">Business Cards</option>
+              <option value="Brochures">Brochures</option>
+              <option value="Flyers">Flyers</option>
+              <option value="Banners">Banners & Signage</option>
+              <option value="Stationery">Stationery</option>
+              <option value="Promotional">Promotional Items</option>
+              <option value="Custom">Custom Project</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="quantity" class="form-label">Quantity *</label>
+            <input type="number" id="quantity" name="quantity" class="form-control" min="1" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="description" class="form-label">Project Description *</label>
+            <textarea id="description" name="description" class="form-control form-textarea" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label class="form-label">Upload Files (Design, Specifications, Reference Materials)</label>
+            <div class="file-upload">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p>Drag & drop files here or click to browse</p>
+              <small>Max file size: 20MB. Accepted formats: PDF, JPG, PNG, AI, PSD, DOCX</small>
+              <input type="file" id="fileInput" name="files[]" multiple>
+            </div>
+            <div id="fileList"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="deadline" class="form-label">Preferred Deadline</label>
+            <input type="date" id="deadline" name="deadline" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="notes" class="form-label">Additional Notes</label>
+            <textarea id="notes" name="notes" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn submit-btn">Submit Order Request</button>
+        <div id="formMessage" class="form-message"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+    <!-- Keep your process, FAQ, and footer sections as they were -->
+    <!-- Scripts -->
+
+    <!-- Order Process Section -->
+    <section class="section-padding process-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple and straightforward process to get your printing done</p>
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Request</h3>
+                    <p>Fill out the order form with your project details and requirements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Get a Quote</h3>
+                    <p>Our team reviews your request and provides pricing and timeline options.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Approve Design</h3>
+                    <p>Review and approve the design proof before production begins.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Order</h3>
+                    <p>Your completed order will be delivered to your specified location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What file formats do you accept?</span>
+                        
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We accept various file formats including PDF, AI, PSD, INDD, JPG, PNG, and TIFF. For the best print quality, we recommend vector formats (PDF, AI) or high-resolution (300 DPI) raster images.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to complete an order?</span>
+                        
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Production times vary depending on the type of product, quantity, and current order volume. Standard business cards typically take 3-5 business days, while more complex projects may take 7-10 business days. Rush services are available for most products at an additional cost.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer design services?</span>
+                        
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, we offer professional design services for all our print products. Our experienced designers can create custom designs or make adjustments to your existing files. Design services are priced separately based on the complexity and requirements of your project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We accept various payment methods including credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. For corporate clients, we also offer net-30 payment terms upon approval of credit application.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer shipping or delivery?</span>
+                        
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, we offer shipping through reliable carriers to any location. Local delivery is available for orders within a 30-mile radius of our facility. Shipping and delivery costs are calculated based on weight, dimensions, and destination.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Universal Printing Press</h3>
+                    <p>Your trusted partner for all printing needs. We deliver quality printing solutions for businesses and individuals.</p>
+                    <div class="social-icons">
+                        <a href="https://wa.me/+233599997279"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/universalprintingpress"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/universalprintpress"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/universalprintingpress"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Who we are</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="order.html">Order Now</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>What we do</h3>
+                    <ul class="footer-links">
+                        <li><a href="service.html#service-card">Business Printing</a></li>
+                        <li><a href="service.html#service-card">Marketing Materials</a></li>
+                        <li><a href="service.html#service-card">Large Format Printing</a></li>
+                        <li><a href="service.html#service-card">Embroidery Printing</a></li>
+                        <li><a href="service.html#service-card">DTF Printing</a></li>
+                        <li><a href="service.html#service-card">Special Event Printing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#contact-map"><i class="fas fa-map-marker-alt"></i>  Awurade Na Aye Storey Building, Sampa, Bono Region, Ghana.</a></li>
+                        <li><a href="https://wa.me/+233599997279"><i class="fas fa-phone-alt"></i>  (+233) 59-999-7279</a></li>
+                        <li><a href="uppsampa2025@gmail.com"><i class="fas fa-envelope"></i>  uppsampa2025@gmail.com</a></li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 8AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Universal Printing Press. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+<script src="main.js">
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png', 'ai', 'psd', 'docx'];
+    const maxFileSize = 20 * 1024 * 1024; // 20MB
+    let uploadedFiles = [];
+
+    fileInput.addEventListener('change', handleFileUpload);
+
+    function handleFileUpload(e) {
+        const files = Array.from(e.target.files);
+        files.forEach(file => {
+            if (file.size > maxFileSize) {
+                showError(`File ${file.name} exceeds 20MB.`);
+                return;
+            }
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (!allowedExtensions.includes(ext)) {
+                showError(`File ${file.name} has an unsupported format.`);
+                return;
+            }
+            uploadedFiles.push(file);
+            displayFile(file);
+        });
+        fileInput.value = '';
+    }
+
+    function displayFile(file) {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        const fileIcon = document.createElement('i');
+        fileIcon.className = getFileIconClass(file.name);
+        const fileName = document.createElement('span');
+        fileName.textContent = file.name;
+        const removeBtn = document.createElement('span');
+        removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+        removeBtn.addEventListener('click', function() {
+            uploadedFiles = uploadedFiles.filter(f => f !== file);
+            fileItem.remove();
+        });
+        fileItem.appendChild(fileIcon);
+        fileItem.appendChild(fileName);
+        fileItem.appendChild(removeBtn);
+        fileList.appendChild(fileItem);
+    }
+
+    function getFileIconClass(name) {
+        const ext = name.split('.').pop().toLowerCase();
+        switch (ext) {
+            case 'pdf': return 'fas fa-file-pdf';
+            case 'jpg': case 'jpeg': case 'png': return 'fas fa-file-image';
+            case 'ai': case 'psd': return 'fas fa-file-image';
+            case 'docx': case 'doc': return 'fas fa-file-word';
+            default: return 'fas fa-file';
+        }
+    }
+
+    const orderForm = document.getElementById('orderForm');
+    const formMessage = document.getElementById('formMessage');
+
+    orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const requiredFields = orderForm.querySelectorAll('[required]');
+        let isValid = true;
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('error');
+            } else {
+                field.classList.remove('error');
+            }
+        });
+        if (!isValid) {
+            showError('Please fill in all required fields.');
+            return;
+        }
+        const formData = new FormData(orderForm);
+        uploadedFiles.forEach(file => {
+            formData.append('files[]', file);
+        });
+        const submitBtn = orderForm.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Processing...';
+        submitBtn.disabled = true;
+        fetch('upload.php', { method: 'POST', body: formData })
+        .then(response => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            if (response.ok) {
+                window.location.href = 'thank-you.html';
+            } else {
+                showError('An error occurred while submitting the form.');
+            }
+        })
+        .catch(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            showError('An error occurred. Please try again.');
+        });
+    });
+
+    function showError(msg) {
+        formMessage.textContent = msg;
+        formMessage.className = 'form-message error';
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => formMessage.className = 'form-message', 5000);
+    }
+
+    // Drag & drop
+    const dropZone = document.querySelector('.file-upload');
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev => {
+        dropZone.addEventListener(ev, preventDefaults, false);
+    });
+    function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+    ['dragenter', 'dragover'].forEach(ev => {
+        dropZone.addEventListener(ev, () => dropZone.classList.add('highlight'), false);
+    });
+    ['dragleave', 'drop'].forEach(ev => {
+        dropZone.addEventListener(ev, () => dropZone.classList.remove('highlight'), false);
+    });
+    dropZone.addEventListener('drop', function(e) {
+        const files = e.dataTransfer.files;
+        if (files.length) {
+            handleFileUpload({ target: { files } });
+        }
+    });
+});
+</script>
+
+<!-- Tawk.to -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68235d04d89e0b190930b8d2/1ir526mr8';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</body>
+</html>

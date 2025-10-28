@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#003366">
+    <title>Universal Printing Press | Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="img/upplogo.png" alt="Universal Printing Press">
+                    <span class="logo-text">UPP</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="order.html" class="btn btn-primary btn-nav">Get a Quote </a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </button>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portfolio Hero Section -->
+    <section class="hero">
+        <!-- Background Slider -->
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('img/emb-logo-ny.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/dtf.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/large_format_stickers.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/mug.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('img/socks.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Creative Portfolio</h1>
+                <div class="rotating-slogan">
+                    <span class="slogan-text active">Showcasing Excellence</span>
+                    <span class="slogan-text">Creative Solutions</span>
+                    <span class="slogan-text">Quality Craftsmanship</span>
+                </div>
+                <p>Browse through our collection of exceptional printing projects we've delivered for our clients. From stationary printing to large format prints, we take pride in every project.</p>
+                
+                <div style="margin-bottom: 2rem;">
+                    <a href="#portfolio-work" class="btn btn-accent">View Our Work</a>
+                    <a href="order.html" class="btn btn-outline">Start Your Project</a>
+                </div>
+
+                <div class="comp-mouse-container">
+                    <div class="comp-mouse">
+                        <div class="click-me">Click me!</div>
+                        <div class="usb-wire"></div>
+                        <div class="comp-mouse-top"></div>
+                        <div class="comp-mouse-bottom"></div>
+                        <div class="scroll-wheel"></div>
+                        <div class="light"></div>
+                    </div>
+                </div>
+                <h6>scroll-down</h6>
+            </div>
+        </div>
+    </section>
+
+    <!--
+    <!-- Portfolio Stats 
+    <section class="section-padding" style="background-color: var(--light-color);">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-text">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-text">Service Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-text">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>  -->
+
+    <!-- Portfolio Categories -->
+    <section class="section-padding" id="portfolio-work">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <p class="section-subtitle">Explore our diverse range of printing projects across different categories</p>
+            
+            <div class="category-filters">
+                <button class="category-btn active" data-filter="all">All Projects</button>
+                <button class="category-btn" data-filter="business-cards">Invoice @ Receipts</button>
+                <button class="category-btn" data-filter="posters">Custom</button>
+                <button class="category-btn" data-filter="packaging">Packaging</button>
+                <button class="category-btn" data-filter="banners">Banners & Posters</button>
+                <button class="category-btn" data-filter="dtf">DTF Printing</button>
+                <button class="category-btn" data-filter="embroidery">Embroidery</button>
+                <button class="category-btn" data-filter="stationery">Stationery</button>
+                <button class="category-btn" data-filter="brochures">Our Office & Machines</button>
+            </div>
+
+            <!-- Modern Portfolio Grid -->
+            <div class="modern-portfolio-grid">
+                <!-- Business Cards -->
+                <div class="portfolio-card" data-category="business-cards">
+                    <div class="portfolio-image">
+                        <img src="img/invoice_books.jpg" alt="Premium Business Cards">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Invoice Books for business</h3>
+                                <p>Hard cover invoice</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Invoice books</span>
+                                    <span class="tag">Premium</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="premium-business-cards">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="business-cards">
+                    <div class="portfolio-image">
+                        <img src="img/Invoice_book.jpg" alt="Premium Business Cards">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Easy tearing invoice books</h3>
+                                <p>Hard cover invoice</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Business Invoice</span>
+                                    <span class="tag">Premium</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="premium-business-cards">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Brochures -->
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/of.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Our Office</h3>
+                                <p>High-class bussines office</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Modern</span>
+                                    <span class="tag">Equipped</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/serv-LF.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Large Format Machine</h3>
+                                <p>High-efficiency Large format printing machine</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Weather Resistant</span>
+                                    <span class="tag">Efficiency</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/serv-dtf.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>DTF Machine</h3>
+                                <p>High-quality direct-to-firm printing</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Water-resistant</span>
+                                    <span class="tag">Eye-catching</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/heat-press.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Heat Press</h3>
+                                <p>High-efficiency heat press for t-shirt and mugs Customization</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Heat</span>
+                                    <span class="tag">Transfer</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/heat-press-cap.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Heat Press</h3>
+                                <p>High-heat press for caps Customization</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Cap</span>
+                                    <span class="tag">Hat</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/paper-lamination.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Paper Cuting and Lamination</h3>
+                                <p>Conviniency cutting and lamination</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Paper cutting</span>
+                                    <span class="tag">Lamination</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/serv-sta.jpg" alt="Travel Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Our office</h3>
+                                <p>High class bussines office</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">staff</span>
+                                    <span class="tag">Prints</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="travel-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DTF Printing -->
+                <div class="portfolio-card" data-category="dtf">
+                    <div class="portfolio-image">
+                        <img src="img/Nat_group.jpg" alt="DTF T-Shirts">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Custom DTF T-Shirts</h3>
+                                <p>Vibrant DTF prints for GNAT</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">DTF</span>
+                                    <span class="tag">Apparel</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="dtf-shirts">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="dtf">
+                    <div class="portfolio-image">
+                        <img src="img/dtf_logo_f.jpg" alt="DTF T-Shirts">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Custom DTF T-Shirts</h3>
+                                <p>Vibrant DTF prints for brand identity</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">DTF</span>
+                                    <span class="tag">Apparel</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="dtf-shirts">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="dtf">
+                    <div class="portfolio-image">
+                        <img src="img/cyo_cap_dtf.jpg" alt="DTF T-Shirts">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Custom DTF T-Shirts</h3>
+                                <p>Vibrant DTF prints for local Churches</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">DTF</span>
+                                    <span class="tag">Apparel</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="dtf-shirts">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="dtf">
+                    <div class="portfolio-image">
+                        <img src="img/dtf-src.jpg" alt="DTF T-Shirts">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Custom DTF T-Shirts</h3>
+                                <p>Vibrant DTF prints for event/SRC Celebrations</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">DTF</span>
+                                    <span class="tag">Apparel</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="dtf-shirts">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Packaging -->
+                <div class="portfolio-card" data-category="packaging">
+                    <div class="portfolio-image">
+                        <img src="img/pack2.jpg" alt="Product Packaging">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Eco-friendly Packaging</h3>
+                                <p>Sustainable packaging for St. Ann's JHS</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Packaging</span>
+                                    <span class="tag">Eco-friendly</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="eco-packaging">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="packaging">
+                    <div class="portfolio-image">
+                        <img src="img/packs.jpg" alt="Product Packaging">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Eco-friendly Packaging</h3>
+                                <p>Sustainable packaging</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Packaging</span>
+                                    <span class="tag">Eco-friendly</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="eco-packaging">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="packaging">
+                    <div class="portfolio-image">
+                        <img src="img/yellow_pack.jpg" alt="Product Packaging">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Eco-friendly Packaging</h3>
+                                <p>Sustainable packaging</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Packaging</span>
+                                    <span class="tag">Eco-friendly</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="eco-packaging">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="packaging">
+                    <div class="portfolio-image">
+                        <img src="img/socks.jpg" alt="Product Packaging">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Eco-friendly Packaging</h3>
+                                <p>Sustainable packaging</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Packaging</span>
+                                    <span class="tag">Eco-friendly</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="eco-packaging">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banners -->
+                <div class="portfolio-card" data-category="banners">
+                    <div class="portfolio-image">
+                        <img src="img/lf-suma.jpg" alt="Exhibition Banner">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Exhibition Banner</h3>
+                                <p>Large format banner for market exhibition</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Banners</span>
+                                    <span class="tag">Large Format</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="exhibition-banner">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="banners">
+                    <div class="portfolio-image">
+                        <img src="img/lf.jpg" alt="Exhibition Banner">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Exhibition Banner</h3>
+                                <p>Large format banner for Funeral Anouncement</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Banners</span>
+                                    <span class="tag">Large Format</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="exhibition-banner">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="banners">
+                    <div class="portfolio-image">
+                        <img src="img/large_fomat_flyer.jpg" alt="Exhibition Banner">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Exhibition Banner</h3>
+                                <p>Large format banner for TechExpo conference</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Banners</span>
+                                    <span class="tag">Large Format</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="exhibition-banner">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="banners">
+                    <div class="portfolio-image">
+                        <img src="img/large_format_stickers.jpg" alt="Exhibition Banner">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Stickers</h3>
+                                <p>Stickers for brand labelling</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Stickers</span>
+                                    <span class="tag">Large Format</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="exhibition-banner">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="banners">
+                    <div class="portfolio-image">
+                        <img src="img/lf-pos.jpg" alt="Exhibition Banner">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Exhibition Poster</h3>
+                                <p>Large format poster for info display</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Posters</span>
+                                    <span class="tag">Large Format</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="exhibition-banner">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Embroidery -->
+                <div class="portfolio-card" data-category="embroidery">
+                    <div class="portfolio-image">
+                        <img src="img/embbck.jpg" alt="Embroidered Caps">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Embroidery</h3>
+                                <p>Custom embroidered caps and uniforms</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Embroidery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-embroidery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="embroidery">
+                    <div class="portfolio-image">
+                        <img src="img/embroidery_cap.jpg" alt="Embroidered Caps">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Embroidery</h3>
+                                <p>Custom embroidered caps and uniforms</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Embroidery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-embroidery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="embroidery">
+                    <div class="portfolio-image">
+                        <img src="img/emb_front.jpg" alt="Embroidered Caps">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Embroidery</h3>
+                                <p>Custom embroidered caps and uniforms</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Embroidery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-embroidery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- customs -->
+                <div class="portfolio-card" data-category="posters">
+                    <div class="portfolio-image">
+                        <img src="img/mug.jpg" alt="Event Poster">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Custom Mugs for Event Celebration</h3>
+                                <p>Magic Mugs</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Custon</span>
+                                    <span class="tag">Events</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="music-festival-poster">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="posters">
+                    <div class="portfolio-image">
+                        <img src="img/mugs_2.jpg" alt="Event Poster">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Custom Mugs</h3>
+                                <p>Custom Mugs for Event Celebration</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Mugs</span>
+                                    <span class="tag">Events</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="music-festival-poster">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="posters">
+                    <div class="portfolio-image">
+                        <img src="img/mugs_3.jpg" alt="custom mug">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Customized Mug</h3>
+                                <p>Vibrant design for birthday mug</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Birthdays</span>
+                                    <span class="tag">Events</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="music-festival-poster">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card" data-category="posters">
+                    <div class="portfolio-image">
+                        <img src="img/socks_2.jpg" alt="custom mug">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Customized Socks</h3>
+                                <p>High quality cotton socks for schools and groups</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Schools</span>
+                                    <span class="tag">Groups</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="music-festival-poster">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="posters">
+                    <div class="portfolio-image">
+                        <img src="img/apron.jpg" alt="custom mug">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Customized Apron</h3>
+                                <p>Vibrant Apron Designs</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Market</span>
+                                    <span class="tag">Sales</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="music-festival-poster">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="posters">
+                    <div class="portfolio-image">
+                        <img src="img/gprtu.jpg" alt="custom mug">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Customized cap</h3>
+                                <p>Vibrant cap design for brand Showcasing & identity</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Cap</span>
+                                    <span class="tag">Brand</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="music-festival-poster">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stationery -->
+                <div class="portfolio-card" data-category="stationery">
+                    <div class="portfolio-image">
+                        <img src="img/ci.jpg" alt="Corporate Stationery">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Stationery</h3>
+                                <p>Complete stationery set for Zenith Architecture</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Stationery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-stationery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="stationery">
+                    <div class="portfolio-image">
+                        <img src="img/Hand_book.jpg" alt="Corporate Stationery">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Stationery</h3>
+                                <p>Complete stationery set for Zenith Architecture</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Stationery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-stationery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="stationery">
+                    <div class="portfolio-image">
+                        <img src="img/Inv_card.jpg" alt="Corporate Stationery">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Stationery</h3>
+                                <p>Complete stationery set for Zenith Architecture</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Stationery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-stationery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="stationery">
+                    <div class="portfolio-image">
+                        <img src="img/Certificate.jpg" alt="Corporate Stationery">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Corporate Stationery</h3>
+                                <p>Complete stationery set for Zenith Architecture</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Stationery</span>
+                                    <span class="tag">Corporate</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-stationery">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Portfolio Items -->
+                <div class="portfolio-card" data-category="packaging">
+                    <div class="portfolio-image">
+                        <img src="img/pack1.jpg" alt="Retail Packaging">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Luxury Retail Packaging</h3>
+                                <p>Premium packaging for Elegance Boutique</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Packaging</span>
+                                    <span class="tag">Luxury</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="luxury-packaging">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="brochures">
+                    <div class="portfolio-image">
+                        <img src="img/u3.1.jpg" alt="Corporate Brochure">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Embroidery</h3>
+                                <p>Professional Embroidery Services</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Embroidery</span>
+                                    <span class="tag">Custom</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="corporate-brochure">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="business-cards">
+                    <div class="portfolio-image">
+                        <img src="img/invoice_books.jpg" alt="Creative Business Cards">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Creative Business Invoice</h3>
+                                <p></p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">Invoice & Receipts</span>
+                                    <span class="tag">Creative</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="creative-cards">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="dtf">
+                    <div class="portfolio-image">
+                        <img src="img/dtf.jpg" alt="DTF Merchandise">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Event Merchandise</h3>
+                                <p>DTF printed merchandise for music festival</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag">DTF</span>
+                                    <span class="tag">Merchandise</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-icon view-project" data-project="event-merchandise">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="btn btn-outline" id="loadMoreBtn">Load More Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Showcase -->
+    <!--<section class="section-padding" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Highlighting our most successful and impactful printing projects</p>
+            
+            <div class="featured-showcase">
+                <div class="featured-project-large">
+                    <div class="project-image">
+                        <img src="img/pack3.jpg" alt="Corporate Rebrand Package">
+                        <div class="project-badge">Featured</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Corporate Identity</div>
+                        <h3>Complete Corporate Rebrand</h3>
+                        <p>Comprehensive rebranding package including logo design, mugs, caps, letterheads, and marketing materials for Nafana Rural Bank's new identity.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Items Designed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Working Days</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Client Satisfaction</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="order.html" class="btn btn-primary">Get a Quote </a>
+                            <button class="btn btn-outline" id="portfolio-work">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-projects-grid">
+                    <div class="featured-project-small">
+                        <div class="project-image">
+                            <img src="img/serv-sta.jpg" alt="Book Publishing">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Questtion & Answer Booklets</div>
+                            <h4>Premium Answer Booklet Printing</h4>
+                            <p>Question papers, answer booklets and premium finishes.</p>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="featured-project-small">
+                        <div class="project-image">
+                            <img src="img/dtf.jpg" alt="Event Celebration">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Event Celebration</div>
+                            <h4>Annual SRC Festival Celebration</h4>
+                            <p>Complete event package for annual SRC festival.</p>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="featured-project-small">
+                        <div class="project-image">
+                            <img src="img/pack2.jpg" alt="Retail Packaging">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Packaging</div>
+                            <h4>Sustainable Packaging</h4>
+                            <p>Eco-friendly packaging solution for beauty brand.</p>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="featured-project-small">
+                        <div class="project-image">
+                            <img src="img/embl2.jpg" alt="Corporate Uniforms">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Embroidery</div>
+                            <h4>Corporate Uniforms</h4>
+                            <p>Custom embroidered uniforms for hospitality chain.</p>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Process Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Creative Process</h2>
+            <p class="section-subtitle">How we bring your vision to life through our proven workflow</p>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Consultation & Concept</h3>
+                        <p>We start by understanding your vision, requirements, and brand identity to create the perfect concept.</p>
+                    </div>
+                    <div class="step-number">01</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Design & Development</h3>
+                        <p>Our creative team develops initial designs and works with you to refine them to perfection.</p>
+                    </div>
+                    <div class="step-number">02</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Review & Approval</h3>
+                        <p>You review the designs, provide feedback, and approve the final version before production.</p>
+                    </div>
+                    <div class="step-number">03</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Production & Quality Check</h3>
+                        <p>We use state-of-the-art equipment and conduct thorough quality checks throughout production.</p>
+                    </div>
+                    <div class="step-number">04</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Delivery & Support</h3>
+                        <p>Your completed project is carefully packaged and delivered with ongoing support if needed.</p>
+                    </div>
+                    <div class="step-number">05</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="testimonials-container">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Real feedback from satisfied customers who trust us with their printing needs</p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Universal Printing Press transformed our brand image with exceptional quality business cards and brochures. Their attention to detail and professional service exceeded our expectations."</p>
+                            <div class="testimonial-author-info">
+                                <div class="testimonial-avatar">SF</div>
+                                <div class="testimonial-author-details">
+                                    <h4>Seven Frank</h4>
+                                    <p>Marketing Director, Nafana Rural Bank</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"The quality of my book printing was outstanding. They were patient with revisions and delivered a beautiful final product that I'm proud to share with readers."</p>
+                            <div class="testimonial-author-info">
+                                <div class="testimonial-avatar">JL</div>
+                                <div class="testimonial-author-details">
+                                    <h4>Jennifer Lomotey</h4>
+                                    <p>SNTC, Vice Chancellor</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Their embroidery work on our school uniforms was flawless. The quality has held up beautifully and they met our tight deadline without compromising quality."</p>
+                            <div class="testimonial-author-info">
+                                <div class="testimonial-avatar">MR</div>
+                                <div class="testimonial-author-details">
+                                    <h4>Mrs. Rose</h4>
+                                    <p>Headmistress, Nafana Senior High</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let us help you bring your vision to life with our premium printing services. Whether you need business cards, brochures, or large-format prints, we're here to exceed your expectations.</p>
+            <div class="btn-group">
+                <a href="order.html" class="btn btn-accent">Start Your Project</a>
+                <a href="index.html#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Universal Printing Press</h3>
+                    <p>Your trusted partner for all printing needs. Quality, reliability, and customer satisfaction guaranteed.</p>
+                    <div class="social-icons">
+                        <a href="https://wa.me/+233599997279"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/universalprintingpress"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/universalprintpress"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/universalprintingpress"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Who we are</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="order.html">Order Online</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>What we do</h3>
+                    <ul class="footer-links">
+                        <li><a href="service.html#service-card">Business Printing</a></li>
+                        <li><a href="service.html#service-card">Marketing Printing</a></li>
+                        <li><a href="service.html#service-card">Large Format Printing</a></li>
+                        <li><a href="service.html#service-card">Embroidery Printing</a></li>
+                        <li><a href="service.html#service-card">DTF Printing</a></li>
+                        <li><a href="service.html#service-card">Special Event Printing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#contact-map"><i class="fas fa-map-marker-alt"></i> Awurade Na Aye Storey Building, Sampa</a></li>
+                        <li><a href="https://wa.me/+233599997279"><i class="fas fa-phone"></i> (+233) 59-999-7279</a></li>
+                        <li><a href="uppsampa2025@gmail.com"><i class="fas fa-envelope"></i> uppsampa2025@gmail.com</a></li>
+                        <li><a href=""><i class="fas fa-clock"></i> Mon-Saturday: 8AM-6PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Universal Printing Press. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Title</h2>
+                <div class="modal-close"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // Portfolio specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Portfolio Filtering
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filterValue = btn.getAttribute('data-filter');
+                    
+                    portfolioCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.6s ease forwards';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Load More Functionality
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            let visibleCards = 8;
+            
+            // Initially hide cards beyond the first 8
+            portfolioCards.forEach((card, index) => {
+                if (index >= visibleCards) {
+                    card.style.display = 'none';
+                }
+            });
+            
+            loadMoreBtn.addEventListener('click', () => {
+                const hiddenCards = Array.from(portfolioCards).filter(card => 
+                    card.style.display === 'none' && 
+                    (document.querySelector('.category-btn.active').getAttribute('data-filter') === 'all' || 
+                     card.getAttribute('data-category') === document.querySelector('.category-btn.active').getAttribute('data-filter'))
+                );
+                
+                hiddenCards.slice(0, 4).forEach(card => {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                });
+                
+                if (hiddenCards.length <= 4) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Project Modal
+            
+
+            // Animate portfolio cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            portfolioCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+
+        // Rotating slogan functionality
+        const slogans = document.querySelectorAll('.slogan-text');
+        let currentSlogan = 0;
+
+        function rotateSlogans() {
+            slogans[currentSlogan].classList.remove('active');
+            currentSlogan = (currentSlogan + 1) % slogans.length;
+            slogans[currentSlogan].classList.add('active');
+        }
+
+        // Start rotating slogans
+        if (slogans.length > 0) {
+            setInterval(rotateSlogans, 3000);
+        }
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/68235d04d89e0b190930b8d2/1ir526mr8';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Uploaded files (user uploads should not be in repo)
+uploads/*.png
+uploads/*.jpg
+uploads/*.jpeg
+uploads/*.gif
+
+# Keep the uploads directory but ignore contents
+!uploads/.gitkeep
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*~
+
+# Python cache (if using Python server)
+__pycache__/
+*.py[cod]
+*$py.class
+
