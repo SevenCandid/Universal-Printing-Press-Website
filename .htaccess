@@ -16,10 +16,15 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 # Prevent directory browsing
 Options -Indexes
 
-# Protect sensitive files
+# Protect sensitive files (Hostinger compatible - Apache 2.4+)
 <FilesMatch "^(config\.php|\.htaccess|\.git|\.gitignore|composer\.json|package\.json)$">
-    Order allow,deny
-    Deny from all
+    <IfVersion < 2.4>
+        Order allow,deny
+        Deny from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+        Require all denied
+    </IfVersion>
 </FilesMatch>
 
 # Set PHP upload limits (if allowed by Hostinger)

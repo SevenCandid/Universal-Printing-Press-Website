@@ -326,23 +326,55 @@ class UniversalPrintingApp {
 
     handleContactForm(form) {
         const formData = new FormData(form);
+        
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton ? submitButton.textContent : '';
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+        
         fetch("contact.php", {
             method: "POST",
             body: formData
         })
-        .then(res => res.text())
+        .then(res => {
+            if (!res.ok) {
+                // Handle server errors (400, 405, 422, 500, etc.)
+                return res.text().then(text => {
+                    throw new Error(text || `Server error: ${res.status}`);
+                });
+            }
+            return res.text();
+        })
         .then(response => {
-            console.log("Server response:", response);
-            if (response.trim().toLowerCase() === "success") {
+            const responseText = response.trim().toLowerCase();
+            
+            if (responseText === "success") {
                 this.showNotification("Thank you for your message! We will get back to you soon.", "success");
                 form.reset();
+            } else if (responseText) {
+                // Server returned an error message
+                this.showNotification(response.trim(), "error");
             } else {
-                this.showNotification(response, "error");
+                this.showNotification("Thank you for your message! We will get back to you soon.", "success");
+                form.reset();
+            }
+            
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
             }
         })
         .catch(error => {
-            this.showNotification("There was an error sending your message. Please try again.", "error");
             console.error("Contact form error:", error);
+            this.showNotification("Unable to send message. Please try again or email us directly at uppsampa2025@gmail.com", "error");
+            
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
         });
     }
 

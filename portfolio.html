@@ -1399,6 +1399,17 @@
         </div>
     </footer>
 
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <img id="modalImage" src="" alt="Portfolio Image">
+            <div class="image-modal-close" id="closeImageModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="image-modal-title" id="modalImageTitle"></div>
+        </div>
+    </div>
+
     <!-- Project Modal -->
     <div class="project-modal" id="projectModal">
         <div class="modal-content">
@@ -1418,6 +1429,53 @@
     <script>
         // Portfolio specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {
+            // Reset category filters scroll to start from "All Projects"
+            const categoryFilters = document.querySelector('.category-filters');
+            if (categoryFilters) {
+                // Function to reset scroll to start
+                function resetScroll() {
+                    categoryFilters.scrollLeft = 0;
+                    // Also try to scroll first button into view
+                    const firstBtn = categoryFilters.querySelector('.category-btn');
+                    if (firstBtn) {
+                        firstBtn.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'start' });
+                    }
+                }
+                
+                // Immediate reset
+                resetScroll();
+                
+                // Force reset on multiple intervals to ensure it works on all devices
+                setTimeout(resetScroll, 10);
+                setTimeout(resetScroll, 50);
+                setTimeout(resetScroll, 100);
+                setTimeout(resetScroll, 200);
+                setTimeout(resetScroll, 500);
+                
+                // Reset on window resize and orientation change
+                window.addEventListener('resize', resetScroll);
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(resetScroll, 100);
+                });
+                
+                // Reset on page load complete
+                if (document.readyState === 'complete') {
+                    resetScroll();
+                } else {
+                    window.addEventListener('load', resetScroll);
+                }
+                
+                // Reset on scroll to ensure it doesn't drift
+                let lastScrollLeft = 0;
+                categoryFilters.addEventListener('scroll', function() {
+                    // If scroll is near start (within 5px), keep it at 0
+                    if (categoryFilters.scrollLeft < 5 && categoryFilters.scrollLeft !== 0) {
+                        categoryFilters.scrollLeft = 0;
+                    }
+                    lastScrollLeft = categoryFilters.scrollLeft;
+                });
+            }
+            
             // Portfolio Filtering
             const categoryBtns = document.querySelectorAll('.category-btn');
             const portfolioCards = document.querySelectorAll('.portfolio-card');
@@ -1470,8 +1528,120 @@
                 }
             });
             
-            // Project Modal
+            // Image Modal Functionality
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalImageTitle = document.getElementById('modalImageTitle');
+            const closeImageModal = document.getElementById('closeImageModal');
             
+            // Function to open modal
+            function openModal(card) {
+                const img = card.querySelector('.portfolio-image img');
+                const title = card.querySelector('.portfolio-info h3');
+                
+                if (img) {
+                    modalImage.src = img.src;
+                    modalImage.alt = img.alt || 'Portfolio Image';
+                    modalImageTitle.textContent = title ? title.textContent : '';
+                    imageModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            }
+            
+            // Get all view buttons
+            const viewButtons = document.querySelectorAll('.btn-icon.view-project');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const portfolioCard = this.closest('.portfolio-card');
+                    if (portfolioCard) {
+                        openModal(portfolioCard);
+                    }
+                });
+            });
+            
+            // Add click/touch handlers to portfolio cards (especially for mobile)
+            portfolioCards.forEach(card => {
+                let touchStartY = 0;
+                let touchStartX = 0;
+                let touchEndY = 0;
+                let touchEndX = 0;
+                let touchMoved = false;
+                
+                // Touch start - track position
+                card.addEventListener('touchstart', function(e) {
+                    touchStartY = e.touches[0].clientY;
+                    touchStartX = e.touches[0].clientX;
+                    touchMoved = false;
+                }, { passive: true });
+                
+                // Touch move - detect if user is scrolling
+                card.addEventListener('touchmove', function(e) {
+                    if (e.touches.length > 0) {
+                        const currentY = e.touches[0].clientY;
+                        const currentX = e.touches[0].clientX;
+                        const diffY = Math.abs(currentY - touchStartY);
+                        const diffX = Math.abs(currentX - touchStartX);
+                        // If moved more than 5px, consider it a scroll
+                        if (diffY > 5 || diffX > 5) {
+                            touchMoved = true;
+                        }
+                    }
+                }, { passive: true });
+                
+                // Touch end - open modal if it was a tap
+                card.addEventListener('touchend', function(e) {
+                    touchEndY = e.changedTouches[0].clientY;
+                    touchEndX = e.changedTouches[0].clientX;
+                    const touchDiffY = Math.abs(touchStartY - touchEndY);
+                    const touchDiffX = Math.abs(touchStartX - touchEndX);
+                    
+                    // Only open modal if it's a tap (not a scroll) and not touching buttons
+                    if (!touchMoved && touchDiffY < 10 && touchDiffX < 10) {
+                        if (!e.target.closest('.btn-icon') && !e.target.closest('.portfolio-actions')) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            openModal(card);
+                        }
+                    }
+                }, { passive: false });
+                
+                // Click handler for desktop - only if not a touch device
+                if (window.innerWidth > 768 && !('ontouchstart' in window)) {
+                    card.addEventListener('click', function(e) {
+                        // Don't open modal if clicking on button
+                        if (!e.target.closest('.btn-icon') && !e.target.closest('.portfolio-actions')) {
+                            // On desktop, clicking card doesn't open modal (only buttons do)
+                            // But we keep this for compatibility
+                        }
+                    });
+                }
+            });
+            
+            // Close modal when clicking close button
+            if (closeImageModal) {
+                closeImageModal.addEventListener('click', function() {
+                    imageModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                });
+            }
+            
+            // Close modal when clicking outside the image
+            imageModal.addEventListener('click', function(e) {
+                if (e.target === imageModal) {
+                    imageModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                    imageModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
 
             // Animate portfolio cards on scroll
             const observerOptions = {

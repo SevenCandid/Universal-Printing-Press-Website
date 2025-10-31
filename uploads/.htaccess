@@ -1,11 +1,20 @@
 # Protect uploads directory
-# Prevent direct PHP execution in uploads folder
+# Prevent direct PHP execution in uploads folder (Hostinger compatible - Apache 2.4+)
 <FilesMatch "\.php$">
-    Order allow,deny
-    Deny from all
+    <IfVersion < 2.4>
+        Order allow,deny
+        Deny from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+        Require all denied
+    </IfVersion>
 </FilesMatch>
 
-# Allow access to uploaded files
-Order allow,deny
-Allow from all
-
+# Allow access to uploaded files (images, PDFs, etc.)
+<IfVersion < 2.4>
+    Order allow,deny
+    Allow from all
+</IfVersion>
+<IfVersion >= 2.4>
+    Require all granted
+</IfVersion>
