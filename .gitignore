@@ -3,8 +3,15 @@ uploads/*.png
 uploads/*.jpg
 uploads/*.jpeg
 uploads/*.gif
+uploads/*.pdf
+uploads/*.ai
+uploads/*.psd
+uploads/*.doc
+uploads/*.docx
 
-# Keep the uploads directory but ignore contents
+# Keep the uploads directory structure but ignore uploaded content
+!uploads/.htaccess
+!uploads/README.md
 !uploads/.gitkeep
 
 # System files

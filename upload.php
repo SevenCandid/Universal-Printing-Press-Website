@@ -7,21 +7,9 @@
 declare(strict_types=1);
 
 // =======================
-// CONFIGURATION
+// Load Configuration
 // =======================
-$companyName     = "Universal Printing Press";
-$recipientEmail  = "uppsampa2025@gmail.com"; // Admin email (receiver)
-$phoneNumber     = "+233599997279";
-$whatsAppNumber  = "233599997279";
-$uploadDir       = __DIR__ . '/uploads/';
-$maxFileSize     = 20 * 1024 * 1024; // 20 MB max per file
-$allowedExts     = ['pdf','jpg','jpeg','png','ai','psd','doc','docx'];
-
-date_default_timezone_set('Africa/Accra');
-
-// Gmail SMTP credentials (App Password recommended)
-$gmailUser = "uppsampa2025@gmail.com";
-$gmailPass = "uptn ytia tbhb inns"; // App password
+require_once __DIR__ . '/config.php';
 
 // =======================
 // PHPMailer bootstrap
@@ -32,6 +20,17 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/PHPMailer/src/Exception.php';
 require __DIR__ . '/PHPMailer/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer/src/SMTP.php';
+
+// =======================
+// Get Configuration Values
+// =======================
+$companyName     = COMPANY_NAME;
+$recipientEmail  = RECIPIENT_EMAIL;
+$phoneNumber     = PHONE_NUMBER;
+$whatsAppNumber  = WHATSAPP_NUMBER;
+$uploadDir       = UPLOAD_DIR;
+$maxFileSize     = MAX_FILE_SIZE;
+$allowedExts     = ALLOWED_EXTENSIONS;
 
 // =======================
 // Helpers
@@ -248,17 +247,36 @@ $customerHTML .= '
 // Send emails with PHPMailer
 // =======================
 try {
+    // Configure SMTP based on provider
+    if (EMAIL_PROVIDER === 'hostinger') {
+        // Hostinger SMTP Configuration
+        $smtpHost = HOSTINGER_SMTP_HOST;
+        $smtpUser = HOSTINGER_EMAIL;
+        $smtpPass = HOSTINGER_PASS;
+        $smtpSecure = HOSTINGER_SMTP_SECURE === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+        $smtpPort = HOSTINGER_SMTP_PORT;
+        $senderEmail = HOSTINGER_EMAIL;
+    } else {
+        // Gmail SMTP Configuration (default)
+        $smtpHost = 'smtp.gmail.com';
+        $smtpUser = GMAIL_USER;
+        $smtpPass = GMAIL_PASS;
+        $smtpSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $smtpPort = 587;
+        $senderEmail = GMAIL_USER;
+    }
+
     // Admin email
     $adminMailer = new PHPMailer(true);
     $adminMailer->isSMTP();
-    $adminMailer->Host       = 'smtp.gmail.com';
+    $adminMailer->Host       = $smtpHost;
     $adminMailer->SMTPAuth   = true;
-    $adminMailer->Username   = $gmailUser;
-    $adminMailer->Password   = $gmailPass;
-    $adminMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $adminMailer->Port       = 587;
+    $adminMailer->Username   = $smtpUser;
+    $adminMailer->Password   = $smtpPass;
+    $adminMailer->SMTPSecure = $smtpSecure;
+    $adminMailer->Port       = $smtpPort;
 
-    $adminMailer->setFrom($gmailUser, $companyName);
+    $adminMailer->setFrom($senderEmail, $companyName);
     if ($email) $adminMailer->addReplyTo($email, $name);
     $adminMailer->addAddress($recipientEmail);
     $adminMailer->isHTML(true);
@@ -275,15 +293,15 @@ try {
     // Customer email
     $custMailer = new PHPMailer(true);
     $custMailer->isSMTP();
-    $custMailer->Host       = 'smtp.gmail.com';
+    $custMailer->Host       = $smtpHost;
     $custMailer->SMTPAuth   = true;
-    $custMailer->Username   = $gmailUser;
-    $custMailer->Password   = $gmailPass;
-    $custMailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $custMailer->Port       = 587;
+    $custMailer->Username   = $smtpUser;
+    $custMailer->Password   = $smtpPass;
+    $custMailer->SMTPSecure = $smtpSecure;
+    $custMailer->Port       = $smtpPort;
 
-    $custMailer->setFrom($recipientEmail, $companyName);
-    $custMailer->addReplyTo($recipientEmail, $companyName);
+    $custMailer->setFrom($senderEmail, $companyName);
+    $custMailer->addReplyTo($senderEmail, $companyName);
     $custMailer->addAddress($email, $name);
     $custMailer->isHTML(true);
     $custMailer->Subject = $customerSubject;

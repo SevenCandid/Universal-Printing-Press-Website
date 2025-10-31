@@ -2,12 +2,9 @@
 declare(strict_types=1);
 
 // =======================
-// CONFIGURATION
+// Load Configuration
 // =======================
-$companyName    = "Universal Printing Press";
-$recipientEmail = "uppsampa2025@gmail.com"; // Admin email
-$gmailUser      = "uppsampa2025@gmail.com"; // Gmail address used to send mail
-$gmailPass      = "uptn ytia tbhb inns";    // 16-character Gmail app password
+require_once __DIR__ . '/config.php';
 
 // =======================
 // Load PHPMailer
@@ -18,6 +15,12 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/PHPMailer/src/Exception.php';
 require __DIR__ . '/PHPMailer/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer/src/SMTP.php';
+
+// =======================
+// Get Configuration Values
+// =======================
+$companyName    = COMPANY_NAME;
+$recipientEmail = RECIPIENT_EMAIL;
 
 // =======================
 // Helper to sanitize inputs
@@ -72,15 +75,30 @@ $body = "
 try {
     $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $gmailUser;
-    $mail->Password   = $gmailPass;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+    
+    // Configure SMTP based on provider
+    if (EMAIL_PROVIDER === 'hostinger') {
+        // Hostinger SMTP Configuration
+        $mail->Host       = HOSTINGER_SMTP_HOST;
+        $mail->SMTPAuth   = true;
+        $mail->Username   = HOSTINGER_EMAIL;
+        $mail->Password   = HOSTINGER_PASS;
+        $mail->SMTPSecure = HOSTINGER_SMTP_SECURE === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = HOSTINGER_SMTP_PORT;
+        $senderEmail      = HOSTINGER_EMAIL;
+    } else {
+        // Gmail SMTP Configuration (default)
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = GMAIL_USER;
+        $mail->Password   = GMAIL_PASS;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+        $senderEmail      = GMAIL_USER;
+    }
 
     // Set sender and recipients
-    $mail->setFrom($gmailUser, $companyName);
+    $mail->setFrom($senderEmail, $companyName);
     $mail->addReplyTo($email, $name);
     $mail->addAddress($recipientEmail);
 
