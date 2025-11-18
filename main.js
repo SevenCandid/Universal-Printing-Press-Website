@@ -340,13 +340,15 @@ class UniversalPrintingApp {
             body: formData
         })
         .then(res => {
-            if (!res.ok) {
-                // Handle server errors (400, 405, 422, 500, etc.)
-                return res.text().then(text => {
+            // Get response text first
+            return res.text().then(text => {
+                // Check if response is OK
+                if (!res.ok) {
+                    // Handle server errors (400, 405, 422, 500, etc.)
                     throw new Error(text || `Server error: ${res.status}`);
-                });
-            }
-            return res.text();
+                }
+                return text;
+            });
         })
         .then(response => {
             const responseText = response.trim().toLowerCase();
@@ -354,10 +356,15 @@ class UniversalPrintingApp {
             if (responseText === "success") {
                 this.showNotification("Thank you for your message! We will get back to you soon.", "success");
                 form.reset();
-            } else if (responseText) {
+            } else if (responseText.includes("error") || responseText.includes("failed")) {
                 // Server returned an error message
-                this.showNotification(response.trim(), "error");
+                this.showNotification(response.trim() || "Failed to send message. Please try again.", "error");
+            } else if (responseText) {
+                // Some other response - treat as success if it's not clearly an error
+                this.showNotification("Thank you for your message! We will get back to you soon.", "success");
+                form.reset();
             } else {
+                // Empty response - assume success
                 this.showNotification("Thank you for your message! We will get back to you soon.", "success");
                 form.reset();
             }
@@ -369,7 +376,8 @@ class UniversalPrintingApp {
         })
         .catch(error => {
             console.error("Contact form error:", error);
-            this.showNotification("Unable to send message. Please try again or email us directly at uppsampa2025@gmail.com", "error");
+            const errorMessage = error.message || "Unable to send message. Please try again or email us directly at uppsampa2025@gmail.com";
+            this.showNotification(errorMessage, "error");
             
             if (submitButton) {
                 submitButton.disabled = false;

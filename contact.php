@@ -76,8 +76,24 @@ try {
     $mail = new PHPMailer(true);
     $mail->isSMTP();
     
+    // Enable verbose debug output if in debug mode
+    if (defined('DEBUG_MODE') && DEBUG_MODE) {
+        $mail->SMTPDebug = 2;
+        $mail->Debugoutput = function($str, $level) {
+            error_log("PHPMailer Debug: $str");
+        };
+    }
+    
     // Configure SMTP based on provider
     if (EMAIL_PROVIDER === 'hostinger') {
+        // Validate Hostinger credentials are set
+        if (HOSTINGER_EMAIL === 'info@yourdomain.com' || HOSTINGER_PASS === 'your-email-password') {
+            http_response_code(500);
+            echo "Email configuration not set. Please contact the website administrator.";
+            error_log('Contact form error: Hostinger email credentials not configured in config.php');
+            exit;
+        }
+        
         // Hostinger SMTP Configuration
         $mail->Host       = HOSTINGER_SMTP_HOST;
         $mail->SMTPAuth   = true;
@@ -86,15 +102,36 @@ try {
         $mail->SMTPSecure = HOSTINGER_SMTP_SECURE === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = HOSTINGER_SMTP_PORT;
         $senderEmail      = HOSTINGER_EMAIL;
+        
+        // Hostinger-specific settings
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
     } else {
-        // Gmail SMTP Configuration (default)
+        // Gmail SMTP Configuration
+        // Remove spaces from app password (Gmail app passwords are 16 chars without spaces)
+        $gmailPass = str_replace(' ', '', GMAIL_PASS);
+        
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = GMAIL_USER;
-        $mail->Password   = GMAIL_PASS;
+        $mail->Password   = $gmailPass;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
         $senderEmail      = GMAIL_USER;
+        
+        // Gmail-specific settings
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
     }
 
     // Set sender and recipients
@@ -106,12 +143,22 @@ try {
     $mail->isHTML(true);
     $mail->Subject = "New Contact Message - {$companyName}";
     $mail->Body    = $body;
+    
+    // Set charset
+    $mail->CharSet = 'UTF-8';
 
     $mail->send();
     echo "success";
 } catch (Exception $e) {
-    // Log the error instead of showing raw info to the user
-    error_log('Contact form mailer error: ' . $mail->ErrorInfo);
+    // Log the error
+    $errorMsg = 'Contact form mailer error: ' . $mail->ErrorInfo;
+    error_log($errorMsg);
+    
+    // Return appropriate error message
     http_response_code(500);
-    echo "Failed to send message. Please try again later.";
+    if (defined('DEBUG_MODE') && DEBUG_MODE) {
+        echo "Error: " . htmlspecialchars($mail->ErrorInfo);
+    } else {
+        echo "Failed to send message. Please try again later or contact us directly at " . htmlspecialchars($recipientEmail);
+    }
 }

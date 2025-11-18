@@ -4,10 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#003366">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Order printing services online from Universal Printing Press. Get instant quotes for business cards, banners, embroidery, DTF printing, and more. Fast turnaround, quality guaranteed.">
+    <meta name="keywords" content="order printing online Ghana, printing quote Sampa, custom printing order, print order form, printing services order">
+    <meta name="author" content="Universal Printing Press">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://universalprintingpress.com/order.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://universalprintingpress.com/order.html">
+    <meta property="og:title" content="Universal Printing Press | Order Now - Get Your Quote">
+    <meta property="og:description" content="Order printing services online. Get instant quotes for business cards, banners, embroidery, DTF printing, and more. Quality guaranteed.">
+    <meta property="og:image" content="https://universalprintingpress.com/img/upplogo.png">
+    <meta property="og:site_name" content="Universal Printing Press">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Universal Printing Press | Order Now - Get Your Quote">
+    <meta name="twitter:description" content="Order printing services online. Get instant quotes for business cards, banners, embroidery, and more.">
+    <meta name="twitter:image" content="https://universalprintingpress.com/img/upplogo.png">
+    
     <title>Universal Printing Press | Order Now</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" href="img/upplogo.png">
+    <link rel="shortcut icon" type="image/png" href="img/upplogo.png">
+    <link rel="apple-touch-icon" href="img/upplogo.png">
+    <!-- Additional favicon sizes for better browser/device support -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/upplogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/upplogo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/upplogo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/upplogo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -310,7 +337,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html#contact-map"><i class="fas fa-map-marker-alt"></i>  Awurade Na Aye Storey Building, Sampa, Bono Region, Ghana.</a></li>
                         <li><a href="https://wa.me/+233599997279"><i class="fas fa-phone-alt"></i>  (+233) 59-999-7279</a></li>
-                        <li><a href="uppsampa2025@gmail.com"><i class="fas fa-envelope"></i>  uppsampa2025@gmail.com</a></li>
+                        <li><a href="mailto:uppsampa2025@gmail.com"><i class="fas fa-envelope"></i>  uppsampa2025@gmail.com</a></li>
                         <li><i class="fas fa-clock"></i> Mon-Fri: 8AM - 6PM</li>
                     </ul>
                 </div>
@@ -407,18 +434,42 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         fetch('upload.php', { method: 'POST', body: formData })
         .then(response => {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            if (response.ok) {
-                window.location.href = 'thank-you.html';
+            // Check if response is a redirect (status 302/301) or success
+            if (response.redirected || response.ok) {
+                // If redirected, follow the redirect
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    // Check if response is JSON (error) or HTML (success redirect)
+                    return response.text().then(text => {
+                        try {
+                            const json = JSON.parse(text);
+                            if (json.error) {
+                                throw new Error(json.error);
+                            }
+                        } catch (e) {
+                            // Not JSON, assume success and redirect
+                            if (!e.message.includes('JSON')) {
+                                throw e;
+                            }
+                        }
+                        // Success - redirect to thank you page
+                        window.location.href = 'thank-you.html';
+                    });
+                }
             } else {
-                showError('An error occurred while submitting the form.');
+                // Get error message from response
+                return response.text().then(text => {
+                    throw new Error(text || 'An error occurred while submitting the form.');
+                });
             }
         })
-        .catch(() => {
+        .catch(error => {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            showError('An error occurred. Please try again.');
+            const errorMsg = error.message || 'An error occurred. Please try again or contact us directly.';
+            showError(errorMsg);
+            console.error('Order form error:', error);
         });
     });
 
@@ -450,17 +501,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Tawk.to -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/68235d04d89e0b190930b8d2/1ir526mr8';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+<!-- Back to Top Button -->
+<div class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/233599997279" target="_blank" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 </body>
 </html>

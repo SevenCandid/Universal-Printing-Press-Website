@@ -249,6 +249,14 @@ $customerHTML .= '
 try {
     // Configure SMTP based on provider
     if (EMAIL_PROVIDER === 'hostinger') {
+        // Validate Hostinger credentials are set
+        if (HOSTINGER_EMAIL === 'info@yourdomain.com' || HOSTINGER_PASS === 'your-email-password') {
+            http_response_code(500);
+            echo json_encode(['error' => 'Email configuration not set. Please contact the website administrator.']);
+            error_log('Order form error: Hostinger email credentials not configured in config.php');
+            exit;
+        }
+        
         // Hostinger SMTP Configuration
         $smtpHost = HOSTINGER_SMTP_HOST;
         $smtpUser = HOSTINGER_EMAIL;
@@ -256,30 +264,67 @@ try {
         $smtpSecure = HOSTINGER_SMTP_SECURE === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
         $smtpPort = HOSTINGER_SMTP_PORT;
         $senderEmail = HOSTINGER_EMAIL;
+        
+        // Hostinger-specific SMTP options
+        $smtpOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
     } else {
-        // Gmail SMTP Configuration (default)
+        // Gmail SMTP Configuration
+        // Remove spaces from app password (Gmail app passwords are 16 chars without spaces)
+        $gmailPass = str_replace(' ', '', GMAIL_PASS);
+        
         $smtpHost = 'smtp.gmail.com';
         $smtpUser = GMAIL_USER;
-        $smtpPass = GMAIL_PASS;
+        $smtpPass = $gmailPass;
         $smtpSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $smtpPort = 587;
         $senderEmail = GMAIL_USER;
+        
+        // Gmail-specific SMTP options
+        $smtpOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
     }
+
+    // Enable verbose debug output if in debug mode
+    $debugMode = defined('DEBUG_MODE') && DEBUG_MODE;
 
     // Admin email
     $adminMailer = new PHPMailer(true);
     $adminMailer->isSMTP();
+    
+    if ($debugMode) {
+        $adminMailer->SMTPDebug = 2;
+        $adminMailer->Debugoutput = function($str, $level) {
+            error_log("PHPMailer Debug (Admin): $str");
+        };
+    }
+    
     $adminMailer->Host       = $smtpHost;
     $adminMailer->SMTPAuth   = true;
     $adminMailer->Username   = $smtpUser;
     $adminMailer->Password   = $smtpPass;
     $adminMailer->SMTPSecure = $smtpSecure;
     $adminMailer->Port       = $smtpPort;
+    
+    if (!empty($smtpOptions)) {
+        $adminMailer->SMTPOptions = $smtpOptions;
+    }
 
     $adminMailer->setFrom($senderEmail, $companyName);
     if ($email) $adminMailer->addReplyTo($email, $name);
     $adminMailer->addAddress($recipientEmail);
     $adminMailer->isHTML(true);
+    $adminMailer->CharSet = 'UTF-8';
     $adminMailer->Subject = $adminSubject;
     $adminMailer->Body    = $adminHTML;
 
@@ -293,17 +338,30 @@ try {
     // Customer email
     $custMailer = new PHPMailer(true);
     $custMailer->isSMTP();
+    
+    if ($debugMode) {
+        $custMailer->SMTPDebug = 2;
+        $custMailer->Debugoutput = function($str, $level) {
+            error_log("PHPMailer Debug (Customer): $str");
+        };
+    }
+    
     $custMailer->Host       = $smtpHost;
     $custMailer->SMTPAuth   = true;
     $custMailer->Username   = $smtpUser;
     $custMailer->Password   = $smtpPass;
     $custMailer->SMTPSecure = $smtpSecure;
     $custMailer->Port       = $smtpPort;
+    
+    if (!empty($smtpOptions)) {
+        $custMailer->SMTPOptions = $smtpOptions;
+    }
 
     $custMailer->setFrom($senderEmail, $companyName);
     $custMailer->addReplyTo($senderEmail, $companyName);
     $custMailer->addAddress($email, $name);
     $custMailer->isHTML(true);
+    $custMailer->CharSet = 'UTF-8';
     $custMailer->Subject = $customerSubject;
     $custMailer->Body    = $customerHTML;
     $custMailer->send();
@@ -312,7 +370,19 @@ try {
     exit;
 } catch (Exception $e) {
     http_response_code(500);
-    error_log('Mailer Error: ' . $e->getMessage());
-    header('Location: error.html'); // optional friendly error page
+    $errorMsg = 'Order form mailer error: ' . $e->getMessage() . ' | ' . (isset($adminMailer) ? $adminMailer->ErrorInfo : 'Unknown error');
+    error_log($errorMsg);
+    
+    // Return JSON error for AJAX requests, or redirect for form submissions
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'error' => defined('DEBUG_MODE') && DEBUG_MODE 
+                ? htmlspecialchars($errorMsg) 
+                : 'Failed to send order. Please try again or contact us directly.'
+        ]);
+    } else {
+        header('Location: error.html');
+    }
     exit;
 }

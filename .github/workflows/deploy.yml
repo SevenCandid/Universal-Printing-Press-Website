@@ -1,0 +1,52 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  deploy:
+    name: Deploy Website to Hostinger
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (if needed for any build steps)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Deploy files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/universal-printing-press-app/**
+            **/.github/**
+            **/.vscode/**
+            **/*.md
+            **/DEPLOYMENT*.md
+            **/HOSTINGER*.md
+            **/COST*.md
+            **/DATABASE*.md
+            **/FINAL*.md
+            **/QUICK*.md
+            **/.DS_Store
+            **/Thumbs.db
+
+
+
+
+

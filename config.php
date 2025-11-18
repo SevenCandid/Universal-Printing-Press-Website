@@ -17,14 +17,17 @@ define('RECIPIENT_EMAIL', 'uppsampa2025@gmail.com'); // Email address that recei
 // EMAIL PROVIDER SETTINGS
 // ========================
 // Set to 'hostinger' to use Hostinger SMTP, or 'gmail' to use Gmail SMTP
-define('EMAIL_PROVIDER', 'hostinger'); // Options: 'gmail' or 'hostinger' - SET TO 'hostinger' FOR HOSTINGER HOSTING
+define('EMAIL_PROVIDER', 'gmail'); // Options: 'gmail' or 'hostinger' - CURRENTLY SET TO GMAIL
 
 // ========================
 // GMAIL SMTP SETTINGS
 // ========================
-// Use these if EMAIL_PROVIDER is set to 'gmail' (not needed for Hostinger)
+// Use these if EMAIL_PROVIDER is set to 'gmail'
+// IMPORTANT: Use your Gmail App Password (not your regular Gmail password)
+// - To create an App Password: Google Account → Security → 2-Step Verification → App Passwords
+// - App Password can be entered with or without spaces (code will auto-remove spaces)
 define('GMAIL_USER', 'uppsampa2025@gmail.com');
-define('GMAIL_PASS', 'uptn ytia tbhb inns'); // Gmail App Password (16 characters)
+define('GMAIL_PASS', 'uptnytiatbhbinns'); // Gmail App Password (16 characters - spaces optional)
 
 // ========================
 // HOSTINGER SMTP SETTINGS
@@ -37,11 +40,19 @@ define('GMAIL_PASS', 'uptn ytia tbhb inns'); // Gmail App Password (16 character
 // 4. Use those credentials below:
 // 
 // RECOMMENDED: Create email "info@yourdomain.com" or "contact@yourdomain.com" in Hostinger
-define('HOSTINGER_EMAIL', 'info@yourdomain.com'); // UPDATE THIS: Your Hostinger email address (e.g., info@yourdomain.com)
+// 
+// NOTE: If you haven't set up Hostinger email yet, you can temporarily use Gmail
+// by changing EMAIL_PROVIDER to 'gmail' above
+define('HOSTINGER_EMAIL', 'info@universalprintingpress.com'); // UPDATE THIS: Your Hostinger email address (e.g., info@yourdomain.com)
 define('HOSTINGER_PASS', 'your-email-password');   // UPDATE THIS: Your Hostinger email password
 define('HOSTINGER_SMTP_HOST', 'smtp.hostinger.com');
 define('HOSTINGER_SMTP_PORT', 465); // Standard Hostinger SMTP port (use 465 for SSL)
 define('HOSTINGER_SMTP_SECURE', 'ssl'); // Hostinger uses SSL (not TLS)
+
+// ========================
+// DEBUGGING (Set to false in production)
+// ========================
+define('DEBUG_MODE', false); // Set to true to see detailed error messages (only for debugging)
 
 // ========================
 // ORDER FORM SETTINGS

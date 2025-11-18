@@ -3552,8 +3552,8 @@ footer::before {
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 100px; /* Positioned above WhatsApp button */
+  left: 30px; /* Positioned on left side */
   width: 50px;
   height: 50px;
   background-color: var(--accent-color);
@@ -3570,6 +3570,10 @@ footer::before {
   box-shadow: var(--shadow);
 }
 
+.back-to-top i {
+  font-size: 18px;
+}
+
 .back-to-top.active {
   opacity: 1;
   visibility: visible;
@@ -3580,28 +3584,78 @@ footer::before {
   transform: translateY(-5px);
 }
 
-/* Make Tawk.to Live Chat Button Smaller */
-#tawkchat-minified-box,
-.tawk-min-container,
-iframe[title*="chat"] {
-  width: 55px !important;
-  height: 55px !important;
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 998;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: pulse 2s infinite;
 }
 
-/* Mobile - Make chat button smaller */
+.whatsapp-float:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float i {
+  font-size: 32px;
+  color: white;
+}
+
+.whatsapp-float:hover i {
+  color: white;
+}
+
+/* Pulse animation for WhatsApp button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(37, 211, 102, 0.8);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+  }
+}
+
+
+/* Mobile - WhatsApp and Back to Top - Very Small */
 @media (max-width: 768px) {
-  #tawkchat-minified-box,
-  .tawk-min-container,
-  iframe[title*="chat"] {
-    width: 48px !important;
-    height: 48px !important;
+  .whatsapp-float {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .whatsapp-float i {
+    font-size: 20px;
   }
   
   .back-to-top {
-    width: 45px;
-    height: 45px;
-    bottom: 20px;
-    right: 20px;
+    width: 35px;
+    height: 35px;
+    bottom: 65px; /* Move up to make room for WhatsApp button on mobile */
+    left: 15px; /* Positioned on left side on mobile */
+  }
+  
+  .back-to-top i {
+    font-size: 14px;
   }
 }
 
